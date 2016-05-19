@@ -20,7 +20,7 @@ TLink* TText::ReadSection(ifstream &_file)
 		if (strchr(_str, '}'))
 			break;
 		if (strchr(_str, '{'))
-			pFirstInSection->pDown = ReadSection(_file);
+			pTmp->pDown = ReadSection(_file);
 		else
 		{
 			TLink *NewLink = new TLink(_str);
@@ -42,8 +42,10 @@ void TText::PrintSection(TLink *pTmp)
 	if (pTmp == NULL)
 		throw "NULL Pointer pTmp";
 	cout << pTmp->str << endl;
-	PrintSection(pTmp->pDown);
-	PrintSection(pTmp->pNext);
+	if (pTmp->pDown != NULL)
+		PrintSection(pTmp->pDown);
+	if (pTmp->pNext != NULL)
+		PrintSection(pTmp->pNext);
 }
 
 void TText::SaveSection(TLink *pTmp, ofstream &_file)
