@@ -1,3 +1,4 @@
+#include <fstream>
 #include "Stack.h"
 #include "TLink.h"
 
@@ -14,7 +15,7 @@ private:
 	void PrintSection(TLink *);
 	void SaveSection(TLink *, ofstream &);
 public:
-	TText(TLink *);
+	TText(TLink *pointer = NULL);
 	~TText() {};
 	void Reset();
 	void GoNext();

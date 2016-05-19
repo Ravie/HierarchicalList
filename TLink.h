@@ -1,7 +1,5 @@
-#include <fstream>
 #include <iostream>
-#include <cstdio>
-#include <cstring>
+#include <string>
 
 using namespace std;
 
@@ -18,7 +16,7 @@ public:
 	TLink *pNext, *pDown;
 	static TTextMem TextMem;
 
-	TLink(char *, TLink *, TLink *);
+	TLink(char *_str = NULL, TLink *_pNext = NULL, TLink *_pDown = NULL);
 	~TLink() {};
 	void *operator new(size_t);
 	void operator delete(void *);

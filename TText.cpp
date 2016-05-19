@@ -1,6 +1,6 @@
 #include "TText.h"
 
-TText::TText(TLink *pointer = NULL)
+TText::TText(TLink *pointer)
 {
 	if (pointer == NULL)
 		pFirst = new TLink;

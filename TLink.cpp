@@ -1,6 +1,6 @@
 #include "TLink.h"
 
-TLink::TLink(char *_str = NULL, TLink *_pNext = NULL, TLink *_pDown = NULL)
+TLink::TLink(char *_str, TLink *_pNext, TLink *_pDown)
 {
 	pNext = _pNext;
 	pDown = _pDown;
