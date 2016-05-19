@@ -146,11 +146,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="HierarchicalList.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="TLink.h" />
+    <ClInclude Include="TText.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TextParsing.cpp" />
+    <ClCompile Include="TLink.cpp" />
+    <ClCompile Include="TText.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

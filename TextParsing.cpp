@@ -1,4 +1,4 @@
-#include "HierarchicalList.h"
+#include "TText.h"
 TTextMem TLink::TextMem;
 
 void main()
