@@ -1,3 +1,6 @@
+#ifndef TTEXT_H
+#define TTEXT_H	// препроцессорная обёртка
+
 #include <fstream>
 #include "Stack.h"
 #include "TLink.h"
@@ -35,3 +38,5 @@ public:
 	void Load(char *);
 	void Print();
 };
+
+#endif TTEXT_H

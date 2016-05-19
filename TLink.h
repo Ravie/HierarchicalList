@@ -1,5 +1,9 @@
+#ifndef TLINK_H
+#define TLINK_H	// препроцессорная обёртка
+
 #include <iostream>
 #include <string>
+#include "TText.h"
 
 using namespace std;
 
@@ -24,3 +28,5 @@ public:
 	static void MemClean(TText &);
 	static void PrintFree();
 };
+
+#endif TLINK_H
