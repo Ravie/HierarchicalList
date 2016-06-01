@@ -1,5 +1,6 @@
 #ifndef TTEXT_H
 #define TTEXT_H	// препроцессорная обёртка
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <fstream>
 #include "Stack.h"
@@ -23,20 +24,22 @@ public:
 	void Reset();
 	void GoNext();
 	bool IsEnd();
-	int GoNextLink();
-	int GoDownLink();
-	int GoPrevLink();
-	int GoFirstLink();
-	int InsNextLine(char *);
-	int InsNextSection(char *);
-	void InsDownLine(char *);
-	void InsDownSection(char *);
+	void GoNextLink();
+	void GoDownLink();
+	void GoPrevLink();
+	void GoFirstLink();
+	void InsNextLine(string);
+	void InsNextSection(string);
+	void InsDownLine(string);
+	void InsDownSection(string);
 	void DelNextLine();
 	void DelDownLine();
-	char *GetLine();
-	void SetLine(char *);
-	void Load(char *);
+	string GetLine();
+	void SetLine(string);
+	void Load(string);
 	void Print();
+	void Save(string);
+	void StrChoice();
 };
 
 #endif TTEXT_H

@@ -20,7 +20,7 @@ public:
 	TLink *pNext, *pDown;
 	static TTextMem TextMem;
 
-	TLink(char *_str = NULL, TLink *_pNext = NULL, TLink *_pDown = NULL);
+	TLink(const char *_str = NULL, TLink *_pNext = NULL, TLink *_pDown = NULL);
 	~TLink() {};
 	void *operator new(size_t);
 	void operator delete(void *);

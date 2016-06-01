@@ -1,6 +1,6 @@
 ﻿#include "TLink.h"
 
-TLink::TLink(char *_str, TLink *_pNext, TLink *_pDown)
+TLink::TLink(const char *_str, TLink *_pNext, TLink *_pDown)
 {
 	pNext = _pNext;
 	pDown = _pDown;
@@ -13,9 +13,8 @@ TLink::TLink(char *_str, TLink *_pNext, TLink *_pDown)
 void *TLink::operator new(size_t size)
 {
 	TLink *tmp = TextMem.pFree;
-	if (TextMem.pFree == NULL)
-		throw "NULL Pointer pFree";
-	TextMem.pFree = TextMem.pFree->pNext;
+	if (TextMem.pFree != NULL)
+		TextMem.pFree = TextMem.pFree->pNext;
 	return tmp;
 }
 
@@ -31,13 +30,13 @@ void TLink::InitMem(size_t size)
 {
 	TextMem.pFirst = (TLink *)new char[size * sizeof(TLink)];
 	TextMem.pFree = TextMem.pFirst;
-	TextMem.pLast = TextMem.pFirst + size - 1;
+	TextMem.pLast = TextMem.pFirst + (size - 1);
 	TLink *pCurrent = TextMem.pFirst;
 	for (unsigned int i = 0; i < size - 1; i++)
 	{
 		pCurrent->str[0] = '\0';
 		pCurrent->pNext = pCurrent + 1;
-		pCurrent = pCurrent->pNext;
+		pCurrent = pCurrent + 1;
 	}
 	pCurrent->str[0] = '\0';
 	pCurrent->pNext = NULL;
@@ -47,10 +46,13 @@ void TLink::MemClean(TText &txt)
 {
 	for (txt.Reset(); !txt.IsEnd(); txt.GoNext())
 	{
-		char tmp[MaxLen] = "+";
-		strcat_s(tmp, MaxLen, txt.GetLine());
-		txt.SetLine(tmp);
+		string tmp = "+";
+		tmp += txt.GetLine();
+		txt.SetLine(tmp.c_str());
 	}
+	string tmp_str = "+";
+	tmp_str += txt.GetLine();
+	txt.SetLine(tmp_str.c_str());
 	TLink *tmp = TextMem.pFree;
 	while (tmp != NULL)
 	{
@@ -58,6 +60,7 @@ void TLink::MemClean(TText &txt)
 		tmp->str[1] = '\0';
 		tmp = tmp->pNext;
 	}
+	tmp = TextMem.pFirst;
 	for (tmp = TextMem.pFirst; tmp < TextMem.pLast; tmp++)
 	{
 		if (tmp->str[0] != '+')
@@ -72,8 +75,10 @@ void TLink::PrintFree()
 	TLink *tmp = TextMem.pFree;
 	while (tmp != NULL)
 	{
+		int c = 0;
 		if (tmp->str[0] != '\0')
 			cout << tmp->str << endl;
 		tmp = tmp->pNext;
+		c++;
 	}
 }
